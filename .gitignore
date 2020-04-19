@@ -1,0 +1,4 @@
+#has access to bot key, master user name
+config.json
+/node_modules/*
+/node_modules/.bin/*
