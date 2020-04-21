@@ -10,6 +10,8 @@ module.exports = {
         if(array.length === 1){
             if(msg.author.username === master){
                 let first = msg.mentions.users.first();
+                if(first === undefined)
+                    return;
                 let rerolls = getValue(first);
                 values.set(first, ++rerolls);
                 msg.channel.send(`${first} has been blessed with ${rerolls} luck!`)
