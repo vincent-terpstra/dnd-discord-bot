@@ -1,6 +1,6 @@
 module.exports = {
     name: 'choose',
-    desc: 'Choose',
+    desc: 'Choose!',
     master: true,
     execute(msg, array){
         msg.channel.send('Character Creation\n' +
