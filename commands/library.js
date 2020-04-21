@@ -6,6 +6,6 @@ module.exports = {
     cooldown: 10,
     master: true,
     execute(msg, array){
-        msg.author.send("Keys in library\n" + Object.keys(library));
+        msg.author.send(Object.keys(library));
     }
 }
