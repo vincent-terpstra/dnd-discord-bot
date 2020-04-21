@@ -1,4 +1,5 @@
 const { master, prefix, token } = require('./config.json');
+const library = require('./library/library.js');
 const fs = require('fs');
 
 const Discord = require("discord.js")
@@ -28,28 +29,33 @@ client.on("message", msg => {
   const args = msg.content.slice(prefix.length).split(/ +/);
   const commandName = args.shift().toLowerCase();
 
-  if(!client.commands.has(commandName)) return;
-  const command = client.commands.get(commandName);
+  if(client.commands.has(commandName)){
+    const command = client.commands.get(commandName);
 
-  if(!cooldowns.has(command.name)){
-    cooldowns.set(command.name, Date.now())
-  } else {
-    const now = Date.now();
-    const delay = cooldowns.get(command.name) + (command.cooldown || 3) * 1000;
-    
-    if(now < delay)
-      return;
+    if(!cooldowns.has(command.name)){
+      cooldowns.set(command.name, Date.now())
+    } else {
+      const now = Date.now();
+      const delay = cooldowns.get(command.name) + (command.cooldown || 3) * 1000;
+      
+      if(now < delay)
+        return;
 
-    cooldowns.set(command.name, now);
-  }
-  
+      cooldowns.set(command.name, now);
+    }
 
-  try {
-    if(!command.master || msg.author.username === master)
-      command.execute(msg, args);
+    try {
+      if(!command.master || msg.author.username === master){
+        command.execute(msg, args);
+      } else {
+        msg.reply("Let the Lord of Chaos rule!");
+      }
 
-  } catch (error){
-    console.error(error);
+    } catch (error){
+      console.error(error);
+    }
+  } else if(library[commandName]){
+    msg.channel.send(library[commandName])
   }
 })
 
