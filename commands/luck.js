@@ -5,7 +5,6 @@ const values = new discord.Collection();
 module.exports = {
     name: 'luck',
     desc: 'Dovie\'andi se tovya sagain!',
-    cooldown: .1,
     execute(msg, array){
         if(array.length === 1){
             if(msg.author.username === master){
