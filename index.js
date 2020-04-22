@@ -1,4 +1,5 @@
 const { master, prefix, token } = require('./config.json');
+
 const library = require('./library/library.js');
 const fs = require('fs');
 
@@ -7,6 +8,7 @@ const client = new Discord.Client()
 
 const cooldowns = new Discord.Collection();
 client.commands = new Discord.Collection();
+client.characterSheets = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file=>file.endsWith('.js'))
 
@@ -42,18 +44,15 @@ client.on("message", msg => {
       cooldowns.set(command.name, now);
     }
 
-    try {
-      if(!command.master || msg.author.username === master){
-        command.execute(msg, args);
-      } else {
-        msg.reply("Let the Lord of Chaos rule!");
-      }
-
-    } catch (error){
-      console.error(error);
+    if(!command.master || msg.author.username === master){
+      command.execute(msg, args);
+    } else {
+      msg.reply("Let the Lord of Chaos rule!");
     }
   } else if(library[commandName]){
     msg.channel.send(library[commandName])
+  } else if(client.characterSheets.has(msg.author)){
+    client.characterSheets.get(msg.author).runCommand(msg)
   }
 })
 
