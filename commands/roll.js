@@ -1,7 +1,7 @@
 module.exports = {
     name: 'roll',
-    desc: '<xxdxx> ...',
-    usage: '<xxdxx>',
+    desc: 'rolls the dice',
+    usage: '<xxdxx ...>',
     cooldown: 0.1,
     execute(msg, array){
         if(array.length == 0){

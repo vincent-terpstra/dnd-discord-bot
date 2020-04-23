@@ -8,7 +8,7 @@ const client = new Discord.Client()
 
 const cooldowns = new Discord.Collection();
 client.commands = new Discord.Collection();
-client.characterSheets = new Discord.Collection();
+const { characterSheets } = require('./commands/character.js')
 
 const commandFiles = fs.readdirSync('./commands').filter(file=>file.endsWith('.js'))
 
@@ -51,8 +51,8 @@ client.on("message", msg => {
     }
   } else if(library[commandName]){
     msg.channel.send(library[commandName])
-  } else if(client.characterSheets.has(msg.author)){
-    client.characterSheets.get(msg.author).runCommand(msg)
+  } else if(characterSheets.has(msg.author)){
+    characterSheets.get(msg.author).runCommand(msg, commandName, args)
   }
 })
 
