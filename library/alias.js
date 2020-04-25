@@ -1,8 +1,11 @@
 module.exports = {
-    'con':"constitution",
-    'dex':"dexterity",
-    'wis':"wisdom",
-    'str':"strength",
-    'int':"intelligence",
-    'cha':"charisma"
+    "constitution":'con',
+    "dexterity":'dex',
+    "wisdom":'wis',
+    "strength":'str',
+    "intelligence":'int',
+    "charisma":'cha',
+    'char': 'character',
+    'AC': '!',
+    'dmg': 'damage'
 }

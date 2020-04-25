@@ -1,15 +1,15 @@
+const library = require('./library/library.js');
+const alias = require('./library/alias.js')
+const { characterSheets } = require('./commands/character.js')
 const { master, prefix, token } = require('./config.json');
 
-const library = require('./library/library.js');
-const fs = require('fs');
-
 const Discord = require("discord.js")
-const client = new Discord.Client()
 
+const client = new Discord.Client()
 const cooldowns = new Discord.Collection();
 client.commands = new Discord.Collection();
-const { characterSheets } = require('./commands/character.js')
 
+const fs = require('fs');
 const commandFiles = fs.readdirSync('./commands').filter(file=>file.endsWith('.js'))
 
 for(const file of commandFiles){
@@ -25,10 +25,13 @@ client.on("ready", () => {
 client.on("message", msg => {
   if(!msg.content.startsWith(prefix) || msg.author.bot)
     return;
-  
+  try {
   const args = msg.content.slice(prefix.length).split(/ +/);
-  const commandName = args.shift().toLowerCase();
+  let commandName = args.shift().toLowerCase();
 
+  if(alias[commandName])
+    commandName = alias[commandName]
+    
   if(client.commands.has(commandName)){
     const command = client.commands.get(commandName);
 
@@ -53,6 +56,9 @@ client.on("message", msg => {
     msg.channel.send(library[commandName])
   } else if(characterSheets.has(msg.author)){
     characterSheets.get(msg.author).runCommand(msg, commandName, args)
+  }
+  } catch(ex){
+    console.log(ex)
   }
 })
 
