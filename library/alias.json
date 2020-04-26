@@ -1,0 +1,13 @@
+{
+    "con": "constitution",
+    "dex": "dexterity",
+    "wis": "wisdom",
+    "str": "strength",
+    "int": "intelligence",
+    "cha": "charisma",
+    "char": "character",
+    "dmg": "damage",
+    "smash": "bludgeon",
+    "stun": "bludgeon",
+    "attack": "disarm"
+}

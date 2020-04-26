@@ -1,5 +1,8 @@
 const discord = require("discord.js")
-const { master } = require("../config.json")
+
+const{master} = require('../config.json')
+const loader = require('../library/character-loader.json')
+const alias = require("../library/alias.json")
 
 const fs = require('fs');
 const aboutFiles = fs.readdirSync('./characters').filter(file=>file.endsWith('.js'))
@@ -8,7 +11,6 @@ const aboutValues = new discord.Collection();
 
 for(const file of aboutFiles){
   const about = require(`../characters/${file}`);
-
   aboutValues.set(about.name, about);
 }
 
@@ -22,7 +24,7 @@ class Character {
         this.effects  = new discord.Collection();
 
         this.traits.set('AC', 16)
-        const values = ["str", "con", "dex", "wis", "int", "cha"]
+        const values = ["strength", "constitution", "dexterity", "wisdom", "intelligence", "charisma"]
         values.map(
             val => {this.traits.set(val, -1);}
         )
@@ -35,71 +37,71 @@ class Character {
 
     setName(name){ this.name = name; }
 
-    message(){
+    message(username){
+        if(username == undefined)
+            username = this.username
+
         let reply = [];
-        reply.push(`Character ${this.name}`)
-        reply.push(`\tHealth: ${this.health}`)
+        reply.push(`Character ${this.name}\n\tHealth: ${this.health}`)
         Array.from(this.traits).map(
             pair => ( reply.push(`\t${(pair[1] < 0 ? "" : " ") + pair[1]} : ${pair[0]}`))
         )
         reply.push(`try !<trait> or !<first 3 letters of trait> to roll\n`)
-
+        
+        Array.from(this.effects).map(
+            roll => { reply.push(`!${roll[0]}: ${roll[1]['desc'] || roll[1]['usage']}`)}
+        )
+        reply.push('')
         Array.from(this.about).map(
             trait => {
-                let data = trait[1].data
-                Object.keys(data).map(
-                    key=>{ reply.push(`${key} - ${data[key]}`);}
+                Object.entries(trait[1].data).map(
+                    data=> reply.push(`${data[0]} - ${data[1]}`)
                 )
                 
-                if(trait[1].buff){
-                    let key = Object.keys(trait[1].buff)
-                    reply.push(`buff! ${key}: ${trait[1].buff[key]}`)
-                }
+                if(trait[1].buff)
+                Object.entries(trait[1].buff).map(
+                    buff=>reply.push(`buff: ${buff[0]} (${buff[1]})`)
+                )
                 reply.push('')
             }
         )
-        Array.from(this.effects).map(
-            roll => {
-                reply.push(`!${roll[0]}: ${roll[1]['desc'] || roll[1]['usage']}`)
-            }
-        )
-        this.username.send(reply, {static: true})
+        username.send(reply, {static: true})
     }
 
     addAbout(str){
-        if(aboutValues.has(str)){
-            let add = aboutValues.get(str);
-            this.about.set(str, add);
+        if(!aboutValues.has(str))
+            return;
+            
+        let add = aboutValues.get(str);
+        this.about.set(str, add);
 
-            if(add['buff']){
-                let buff = add['buff'];
-                Object.keys(buff).map(
-                    key=>{ 
-                    if(this.traits.has(key)){
-                        let val = this.traits.get(key);
-                        this.traits.set(key, val + buff[key]);
-                    } else {
-                        console.log('Unable to buff ' + buff)
-                    }}
-                )
+        if(add.buff)
+        Object.entries(add.buff).map(
+            buff => {
+                let key = alias[buff[0]]
+                if(key == undefined)
+                    key = buff[0]
+                if(this.traits.has(key)){
+                    this.traits.set(key, this.traits.get(key) + buff[1])
+                } else 
+                    console.log(`Unable to buff: ${buff[0]}`)
             }
+        )
 
-            if(add['rolls']){
-                let rolls = add['rolls']
-                Object.keys(rolls).map(
-                    roll =>{ this.effects.set(roll, rolls[roll])}
-                )
-            }
+        if(add.rolls)
+        Object.entries(add.rolls).map(
+            roll => this.effects.set(roll[0], roll[1])
+        )
+        
 
-            if(add['health']){
-                this.health = add['health']
-            }
-        }
+        if(add.health)
+            this.health = add.health
+        
     }
 
     runCommand(msg, cmd, args){
         if(this.traits.has(cmd)){
-        let roll = Math.floor(Math.random() * 20) + 1;
+            let roll = Math.floor(Math.random() * 20) + 1;
             let end = ""
             if(roll == 20)
                 end = "(Crit Success)!"
@@ -107,17 +109,15 @@ class Character {
                 end = "(Crit Failure)!"
 
             msg.channel.send(`${this.username} rolled ${cmd}: ${roll + this.traits.get(cmd)} ${end}`)
-            
+            return true;
         } else if(this.effects.has(cmd)){
             let roll = this.effects.get(cmd);
-            if(roll['func']){
-                console.log('func')
-                roll['func'](msg, args)
+            if(roll.func){
+                roll.func(msg, args)
             }
-            console.log(roll);
-        } else {
-            msg.channel.send("unable to process "+ cmd);
+            return true;
         }
+        return false;
     }
 
 }
@@ -126,34 +126,29 @@ module.exports = {
     characterSheets: new discord.Collection(),
     name: 'character',
     desc: 'Your player character',
-    usage:'<name charactername | empty>',
+    usage:'',
     execute(msg, args){
-        if(msg.author.username === master && args.length >= 1){
-            const create = msg.mentions.users.first();
-            if(create != undefined){
-                const char = new Character(create);
-                this.characterSheets.set(create, char)
-
-                args.shift(); //remove username
-                while(args.length){
-                    let argument = args.shift();
-                    char.addAbout(argument)
-                }
+        const load = author => {
+            if(this.characterSheets.has(author)){
+                return this.characterSheets.get(author)
+            } else {
+                const char = new Character(author)
+                this.characterSheets.set(author, char)
+                loader[author.username].map(
+                    value => char.addAbout(value)
+                )
                 char.addAbout('gear')
-
-                char.message();
+    
+                return char;
             }
-        } else if(this.characterSheets.has(msg.author)){
-            const char = this.characterSheets.get(msg.author)
-            if(args.length >= 2){
-                if(args[0] === 'name'){
-                    args.shift();
-                    char.setName(args.join(' '))
-                }
-            }
-            char.message()
         }
-    }
+        if(msg.author.username === master && args.length == 1){
+            let make = msg.mentions.users.first();
+            if(make == undefined)
+                return;
+            load(make).message(msg.author)   
+        } else {
+            load(msg.author).message()
+        }
+    } 
 }
-
-

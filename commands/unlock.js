@@ -10,7 +10,9 @@ module.exports = {
         const player = msg.mentions.users.first();
         if(player != undefined){
             if(characterSheets.has(player)){
-                characterSheets.get(player).addAbout(array[1])
+                let char = characterSheets.get(player)
+                char.addAbout(array[1])
+                char.message();
             }
         }
     }

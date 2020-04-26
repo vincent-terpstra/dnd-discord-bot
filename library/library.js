@@ -15,16 +15,13 @@ module.exports = {
         '\tVampire Lawyer - Patriarch of the Wayne family, co-founder of The Firm\n'+
         '\tThey [The Firm] terrify me, one way or another -- they always get their dues - A Criminal',
     duke: 'Duke & Lord Commander, Sir Thaddeus StoneHeart, Captain of the West Watch\n'+
-        'Protector of the Wall, Defender of Justice, Hand of the Council [...]\n' +
+        'Protector of the Wall, Defender of Justice, Fist of the Council [...]\n' +
         '\tGargoyle - prone to moments of reciting poetry and stoically posing\n' +
         '\tOnce stoically stared down a crook for 48 hours during a interrogation; They confessed to everything',
     church: 'of DOOM',
     pimp: 'A Pocket Pixie Guide; Services include:\n' +
-        '\tDay Planner\n'+
-        '\tDictionary\n'+
-        '\tWeather\n'+
-        '\tTime and Alarm\n'+
-        '\tPortraits\n',
+        '\tDay Planner\n\tMessaging\n\tDictionary\n\tWeather\n'+
+        '\tTime and Alarm\n\tPortraits\n\tMathematics',
     dwarf: ':musical_note: A Dwarf, a female dwarf :musical_note:',
     campaign: "The Shitty Watch\n\tAuthor: Vincent Terpstra",
     prophecy: "And it will come to pass, that the True Players shall be revealed\n"+
@@ -38,5 +35,10 @@ module.exports = {
         '\tAssassins Guild\n' +
         'It\'s awefully efficient; Don\'t wanna get assassinated? Pay your Guild fees!',
     brew: 'a pub',
-    deathsight: 'I see dead people'
+    deathsight: 'I see dead people',
+    rilo: 'A raptor',
+    froyo: 'A hobbit, ratcatcher',
+    eastwatch: ':musical_note: East watch (ah-ah-ah)\nRival of the West Watch (ah-ah-ah)\n'+
+        'Champions of Ker-plunk (ah-ah-ah)\n\nThey\'re defenders of Justice!\n'+
+        'and friendship!\nfor everyone!(x3) :musical_note:\n (tune of \"The Nightman Cometh\")'
 }

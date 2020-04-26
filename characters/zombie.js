@@ -11,7 +11,7 @@ module.exports = {
         revive: { 
             desc: `Revives your character and lose a limb`,
             func: function(msg, args){
-                msg.reply(` has risen "BRAINNSSS" and lost his ${this.effects[Math.floor(Math.random() * this.effects.length)]}`)},
+                msg.reply(` has risen (BRAINNSSS) and lost his ${this.effects[Math.floor(Math.random() * this.effects.length)]}`)},
                 effects: ['hand', 'hand', 'hand', 'head', 'arm', 'foot', 'foot', 'leg']
         },
     },

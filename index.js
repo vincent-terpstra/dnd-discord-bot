@@ -1,5 +1,5 @@
 const library = require('./library/library.js');
-const alias = require('./library/alias.js')
+const alias = require('./library/alias.json')
 const { characterSheets } = require('./commands/character.js')
 const { master, prefix, token } = require('./config.json');
 
@@ -14,7 +14,6 @@ const commandFiles = fs.readdirSync('./commands').filter(file=>file.endsWith('.j
 
 for(const file of commandFiles){
   const command = require(`./commands/${file}`);
-
   client.commands.set(command.name, command);
 }
 
@@ -26,44 +25,41 @@ client.on("message", msg => {
   if(!msg.content.startsWith(prefix) || msg.author.bot)
     return;
   try {
-  const args = msg.content.slice(prefix.length).split(/ +/);
-  let commandName = args.shift().toLowerCase();
+    const args = msg.content.slice(prefix.length).split(/ +/);
+    let commandName = args.shift().toLowerCase();
 
-  if(alias[commandName])
-    commandName = alias[commandName]
-    
-  if(client.commands.has(commandName)){
-    const command = client.commands.get(commandName);
-
-    if(!cooldowns.has(command.name)){
-      cooldowns.set(command.name, Date.now())
-    } else {
-      const now = Date.now();
-      const delay = cooldowns.get(command.name) + (command.cooldown || 3) * 1000;
+    if(alias[commandName])
+      commandName = alias[commandName]
       
-      if(now < delay)
+    if(client.commands.has(commandName)){
+      const command = client.commands.get(commandName);
+
+      if(!cooldowns.has(command.name)){
+        cooldowns.set(command.name, Date.now())
+      } else {
+        const now = Date.now();
+        const delay = cooldowns.get(command.name) + (command.cooldown || 3) * 1000;
+        if(now < delay)
+          return;
+        cooldowns.set(command.name, now);
+      }
+
+      if(!command.master || msg.author.username === master){
+        command.execute(msg, args);
         return;
-
-      cooldowns.set(command.name, now);
+      }
+    } else if(library[commandName]){
+        msg.channel.send(library[commandName])
+        return;
+    } else if(characterSheets.has(msg.author)){
+        if(characterSheets.get(msg.author).runCommand(msg, commandName, args))
+          return;
     }
-
-    if(!command.master || msg.author.username === master){
-      command.execute(msg, args);
-    } else {
-      msg.reply("Let the Lord of Chaos rule!");
+    //FAIL message
+    msg.reply("Let the Lord of Chaos rule!");
+    } catch(ex){
+      console.log(ex)
     }
-  } else if(library[commandName]){
-    msg.channel.send(library[commandName])
-  } else if(characterSheets.has(msg.author)){
-    characterSheets.get(msg.author).runCommand(msg, commandName, args)
-  }
-  } catch(ex){
-    console.log(ex)
-  }
-})
-
-client.on("guildMemberAdd", member=>{
-  member.send("Dovie'andi se tovya sagain.\n\ttype !help for more commands")
 })
 
 client.login(token)
