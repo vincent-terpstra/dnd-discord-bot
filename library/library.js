@@ -41,10 +41,19 @@ module.exports = {
     eastwatch: ':musical_note: East watch (ah-ah-ah)\nRival of the West Watch (ah-ah-ah)\n'+
         'Champions of Ker-plunk (ah-ah-ah)\n\nThey\'re defenders of Justice!\n'+
         'and freedom!\nfor everyone!(x3) :musical_note:\n (tune of \"The Nightman Cometh\")',
-    change: 'combined str/dex also wisdom/intelligence into one trait\n' +
+    rules: 'combined str/dex also wisdom/intelligence into one trait\n' +
             'added insight trait, for perception\n' +
-            'removed charisma trait to focus on improv, persuade with intelligence, intimidate with strength\n' +
-            'removed AC trait, instead defend with traits; block with strength, outmaneuver with intelligence\n',
+            'REMOVED charisma trait to focus on improv, persuade with intelligence, intimidate with strength\n' +
+            'REMOVED AC trait, instead defend with traits; block with strength, outmaneuver with intelligence\n'+
+            'NO opportunity attacks or reactions\n'+
+            'Distances range from: long, medium, short, melee; each taking a turn of movement\n'+
+            'Advantage and disadvantage still exist\n',
+    traits: 
+        'Intelligence - Mental abiltity and how you use it\n'+
+        'Insight - Awareness of your surroundings\n' +
+        'Strength - Physical ability and how you use it\n'+
+        'Constitution - Willpower/morale, and ability to shrug off effects',
+    
     ripper: 'ripper ripper Jack the ripper',
     jack: 'He walks in shadows of the night,\n'+
         'If you meet him, citizen take flight\n'+
