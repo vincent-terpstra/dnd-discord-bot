@@ -34,9 +34,10 @@ module.exports = {
         '\tChurch of Doom\n' +
         '\tAssassins Guild\n' +
         'It\'s awefully efficient; Don\'t wanna get assassinated? Pay your Guild fees!',
-    brew: 'a pub',
+    brew: 'BeelZeeb\'s Brew - a local establishment known for its pints of ale.'+
+        ' They\'ll make you forget about your day, and give you such a throbbing headache in the morning.' +
+        ' That you will feel as the fiends of hell are marching to bring in the apocalypse.',
     deathsight: 'I see dead people',
-    rilo: 'A raptor',
     froyo: 'A hobbit, ratcatcher',
     eastwatch: ':musical_note: East watch (ah-ah-ah)\nRival of the West Watch (ah-ah-ah)\n'+
         'Champions of Ker-plunk (ah-ah-ah)\n\nThey\'re defenders of Justice!\n'+
@@ -63,5 +64,6 @@ module.exports = {
         'A corpse, the morrow, we\'ll find you there\n'+
         'Winged bat, break flesh and bone\n'+
         'For it\'s sins Ker-plunk will atone',
+
     remi: 'Someones pet, now fully grown, abandoned in the sewers.'
 }
