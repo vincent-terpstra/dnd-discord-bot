@@ -15,7 +15,7 @@ module.exports = {
             },
         },
         disarm:{
-            desc: `Smash the enemy! Disarm on 8! alias[attack]`,
+            desc: `Bash the enemy! Disarm on 8! alias[attack]`,
             roll: `2d4 str`,
             func: function(msg, args, char){
                 let attack = char.roll(this.roll)

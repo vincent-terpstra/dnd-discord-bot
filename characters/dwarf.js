@@ -8,7 +8,7 @@ module.exports = {
     flaw: 'It has been a few weeks since you got your rage on, under the light of a full moon.' +
     ' For this reason werewolf are often irritable and hot-headed.',
     },
-    health: 16,
+    health: 20,
     buff: {'ins' : 2, 'str': 1}
 
 }

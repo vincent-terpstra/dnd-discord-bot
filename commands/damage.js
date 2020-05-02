@@ -8,7 +8,7 @@ module.exports = {
     master: true,
     execute(msg, array){
         const player = msg.mentions.users.first();
-        if(player != undefined){
+        if(player != undefined && array[1] >= 0){
             if(characterSheets.has(player)){
                 let char = characterSheets.get(player);
                 char.health -= array[1];

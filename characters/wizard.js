@@ -2,10 +2,14 @@ module.exports = {
     name: 'wizard',
     data: {
         name: 'Wizard School Dropout',
-        about: 'An underachiever at The Academy you were expelled when <INSERT tragic backstory>',
+        about: 'An underachiever at The Academy, you were expelled when <INSERT tragic backstory>',
         wild: 'When you crit fail or succeed! Roll for effect (no luck!)',
         insight: 'Can sense if something is magical in nature\n'+
-            '\tThat giant animated skeleton over there? Yea, that would be magic!'
+            '\tThat giant animated skeleton over there? Yea, that would be magic!',
+        flame: 'By snapping your fingers you are able to create a flame on the tip of your thumb\n'+
+            '\tCould be done with flint and sleight of hand (but where is the fun in that)',
+        mage_hand: 'Telekinesis, move objects with your mind!'+
+            '\n\tMust succeed a int check, and the object should be less then 10 kg'
         
     },
     rolls: {
@@ -16,5 +20,5 @@ module.exports = {
                 effects: ['bold', 'coward', 'loud', 'quiet', 'vigor', 'nausea', 'lucky', 'clumsy']
         },
     },
-    buff: {'int': 2}
+    buff: {'int': 3, 'con': -1}
 }

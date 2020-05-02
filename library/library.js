@@ -41,13 +41,15 @@ module.exports = {
     eastwatch: ':musical_note: East watch (ah-ah-ah)\nRival of the West Watch (ah-ah-ah)\n'+
         'Champions of Ker-plunk (ah-ah-ah)\n\nThey\'re defenders of Justice!\n'+
         'and freedom!\nfor everyone!(x3) :musical_note:\n (tune of \"The Nightman Cometh\")',
-    rules: 'combined str/dex also wisdom/intelligence into one trait\n' +
-            'added insight trait, for perception\n' +
-            'REMOVED charisma trait to focus on improv, persuade with intelligence, intimidate with strength\n' +
-            'REMOVED AC trait, instead defend with traits; block with strength, outmaneuver with intelligence\n'+
-            'NO opportunity attacks or reactions\n'+
-            'Distances range from: long, medium, short, melee; each taking a turn of movement\n'+
-            'Advantage and disadvantage still exist\n',
+    rules: 
+        'COMBINED str/dex ALSO wisdom/intelligence into one trait\n' +
+        'ADDED insight trait, for perception\n' +
+        'REMOVED charisma trait to focus on improv, persuade with intelligence, intimidate with strength\n' +
+        'REMOVED AC trait, instead defend with traits; block with strength, outmaneuver with intelligence\n'+
+        'NO opportunity attacks or reactions\n'+
+        'DISTANCES: long, medium, short, melee; each taking a turn of movement\n'+
+        'Advantage and disadvantage still exist (double rolls)\n'+
+        'TWO actions per turn; only ONE may be an ATTACK',
     traits: 
         'Intelligence - Mental abiltity and how you use it\n'+
         'Insight - Awareness of your surroundings\n' +

@@ -85,10 +85,12 @@ class Character {
                     Object.entries(trait[1].buff).map(
                         buff=>b +=`${buff[0]} (${buff[1]}) `
                     )
-                    reply.push(b + '\n')
+                    reply.push(b)
                 }
+                reply.push('')
             }
         )
+        
         username.send(reply, {static: true})
     }
 
