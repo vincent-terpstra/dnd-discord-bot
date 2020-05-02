@@ -1,8 +1,8 @@
 module.exports = {
     name: 'codpiece',
     data: {
-        name: 'Bejeweled codpiece',
-        about: 'This elaborate jock strap emboldens the wearer',
-    },
-    buff: { 'chr': 2}
+        name: 'Dazzling Ruby codpiece',
+        effect: 'gain +3 int when persuading using int',
+        about: 'Such magnificent family jewels! That guy must be someone important, a Noble or something...',
+    }
 }

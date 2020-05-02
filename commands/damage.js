@@ -10,7 +10,12 @@ module.exports = {
         const player = msg.mentions.users.first();
         if(player != undefined){
             if(characterSheets.has(player)){
-                characterSheets.get(player).damage(msg, array[1])
+                let char = characterSheets.get(player);
+                char.health -= array[1];
+                if(char.health < 0)
+                    char.health = 0
+                
+                msg.channel.send(`${char.username} has taken ${array[1]} damage! They have ${char.health} health!`)
             }
         }
     }

@@ -16,5 +16,5 @@ module.exports = {
                 effects: ['bold', 'coward', 'loud', 'quiet', 'vigor', 'nausea', 'lucky', 'clumsy']
         },
     },
-    buff: {'wis': 2}
+    buff: {'int': 2}
 }

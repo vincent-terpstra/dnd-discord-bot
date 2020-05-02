@@ -40,5 +40,17 @@ module.exports = {
     froyo: 'A hobbit, ratcatcher',
     eastwatch: ':musical_note: East watch (ah-ah-ah)\nRival of the West Watch (ah-ah-ah)\n'+
         'Champions of Ker-plunk (ah-ah-ah)\n\nThey\'re defenders of Justice!\n'+
-        'and friendship!\nfor everyone!(x3) :musical_note:\n (tune of \"The Nightman Cometh\")'
+        'and freedom!\nfor everyone!(x3) :musical_note:\n (tune of \"The Nightman Cometh\")',
+    change: 'combined str/dex also wisdom/intelligence into one trait\n' +
+            'added insight trait, for perception\n' +
+            'removed charisma trait to focus on improv, persuade with intelligence, intimidate with strength\n' +
+            'removed AC trait, instead defend with traits; block with strength, outmaneuver with intelligence\n',
+    ripper: 'ripper ripper Jack the ripper',
+    jack: 'He walks in shadows of the night,\n'+
+        'If you meet him, citizen take flight\n'+
+        'For if you match his vengeful glare\n'+
+        'A corpse, the morrow, we\'ll find you there\n'+
+        'Winged bat, break flesh and bone\n'+
+        'For it\'s sins Ker-plunk will atone',
+    remi: 'Someones pet, now fully grown, abandoned in the sewers.'
 }

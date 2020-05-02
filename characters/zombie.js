@@ -17,5 +17,5 @@ module.exports = {
     },
 
     health: 11,
-    buff: {'str': 2}
+    buff: {'str': 2, 'int': -1}
 }

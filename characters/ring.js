@@ -1,7 +1,11 @@
 module.exports = {
     name: 'ring',
     data: {
-        name: 'A blackened charred ring',
-        deathsight: 'Allows the wearer to see the wraith world'
+        name: 'Charred Ring',
+        about: 'A blackened that shrouds the user in darkness',
+        deathsight: 'Allows the wearer to see the wraith world',
+        stealth: 'When in shadow gain +3 to stealth rolls',
+        secret: 'while stealthing with this ring you should hum the theme song to a spy movie\n'+
+        '\tex: James bond, pink panther, batman...'
     }
 }

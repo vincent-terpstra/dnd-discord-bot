@@ -7,6 +7,6 @@ module.exports = {
         
         insight:  'Corpses! When and how someone died.'
     },
-    buff: {'con':'2'},
+    buff: {'con':2},
     
 }

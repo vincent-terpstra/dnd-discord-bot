@@ -16,26 +16,44 @@ for(const file of aboutFiles){
 
 class Character {
     constructor(username){
-        this.health = 4;
+        this.health = this.maxhealth = 4;
         this.username = username;
         this.name = username.username;
         this.traits = new discord.Collection();
         this.about  = new discord.Collection();
         this.effects  = new discord.Collection();
 
-        this.traits.set('AC', 16)
-        const values = ["strength", "constitution", "dexterity", "wisdom", "intelligence", "charisma"]
+        const values = ["strength", "constitution", "insight", "intelligence"]
         values.map(
             val => {this.traits.set(val, -1);}
         )
     }
 
-    damage(msg, dmg){
-        this.health -= dmg;
-        msg.channel.send(`${this.username} has taken ${dmg} damage; They have ${this.health} health`)
-    }
+    roll(args){
+        let sum = 0;
+        args.split(/ +/).map(
+            a => {
+                if(a.includes('*')){
+                    let sp = a.split('*')
+                    let al = alias[sp[1]]
+                    if(this.traits.has(al)){
+                        sum += this.traits.get(al) * +sp[0]
+                    }
+                } else if (a.includes('d')){
+                    let sp = a.split('d')
+                    while(sp[0] -- > 0){
+                        sum += Math.floor(Math.random() * sp[1] + 1)
+                    }
+                } else if(this.traits.has(alias[a])){
+                    sum += this.traits.get(alias[a])
+                } else {
+                    sum += +a
+                }
+            }
+        )
 
-    setName(name){ this.name = name; }
+        return sum
+    }
 
     message(username){
         if(username == undefined)
@@ -49,7 +67,11 @@ class Character {
         reply.push(`try !<trait> or !<first 3 letters of trait> to roll\n`)
         
         Array.from(this.effects).map(
-            roll => { reply.push(`!${roll[0]}: ${roll[1]['desc'] || roll[1]['usage']}`)}
+            roll => { reply.push(`!${roll[0]}: ${roll[1].desc || roll[1].usage}`)
+                        if(roll[1].roll){
+                            reply.push(`\t(roll) ${roll[1].roll}`)
+                        }
+        }
         )
         reply.push('')
         Array.from(this.about).map(
@@ -58,11 +80,13 @@ class Character {
                     data=> reply.push(`${data[0]} - ${data[1]}`)
                 )
                 
-                if(trait[1].buff)
-                Object.entries(trait[1].buff).map(
-                    buff=>reply.push(`buff: ${buff[0]} (${buff[1]})`)
-                )
-                reply.push('')
+                if(trait[1].buff){
+                    let b = `buffs: `
+                    Object.entries(trait[1].buff).map(
+                        buff=>b +=`${buff[0]} (${buff[1]}) `
+                    )
+                    reply.push(b + '\n')
+                }
             }
         )
         username.send(reply, {static: true})
@@ -93,10 +117,8 @@ class Character {
             roll => this.effects.set(roll[0], roll[1])
         )
         
-
         if(add.health)
-            this.health = add.health
-        
+            this.health = this.maxhealth = add.health
     }
 
     runCommand(msg, cmd, args){
@@ -113,7 +135,7 @@ class Character {
         } else if(this.effects.has(cmd)){
             let roll = this.effects.get(cmd);
             if(roll.func){
-                roll.func(msg, args)
+                roll.func(msg, args, this)
             }
             return true;
         }
@@ -134,6 +156,7 @@ module.exports = {
             } else {
                 const char = new Character(author)
                 this.characterSheets.set(author, char)
+                if(loader[author.username])
                 loader[author.username].map(
                     value => char.addAbout(value)
                 )
@@ -146,7 +169,9 @@ module.exports = {
             let make = msg.mentions.users.first();
             if(make == undefined)
                 return;
-            load(make).message(msg.author)   
+            let char = load(make)
+            char.message(msg.author)
+            this.characterSheets.set(msg.author, char);   
         } else {
             load(msg.author).message()
         }

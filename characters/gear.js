@@ -2,20 +2,24 @@ module.exports = {
     name: 'gear',
     data: {
         name: 'City Watch Gear',
-        uniform: 'Red shirt and brown trousers'
+        uniform: 'Red shirt and brown trousers',
+        truncheon: 'A brutal weapon for a less civilized age'
     },
     rolls: {
-        bludgeon: { 
-            desc: `Smash the enemy! With a chance to stun! alias[stun, smash]`,
-            func: function(msg, args){
-                let attack = Math.floor(Math.random() * 6 + 1)
-                msg.reply(` has attacked and rolled ${attack}.${attack==6? ' A stunning blow': ''}`  )},
+        smash: { 
+            desc: `Smash the enemy! Stun on 10! alias[stun]`,
+            roll: `1d6 2*str`,
+            func: function(msg, args, char){
+                let attack = char.roll(this.roll)
+                msg.reply(` has bludgeoned and rolled ${attack}.${attack >= 10? ' A STUN!': ''}`  )
+            },
         },
         disarm:{
-            desc: `Smash the enemy! With a chance to disarm! alias[attack]`,
-            func: function(msg, args){
-                let attack = Math.floor(Math.random() * 6 + 1)
-                msg.reply(` has attacked and rolled ${attack}.${attack==6? ' A disarming blow': ''}`  )
+            desc: `Smash the enemy! Disarm on 8! alias[attack]`,
+            roll: `2d4 str`,
+            func: function(msg, args, char){
+                let attack = char.roll(this.roll)
+                msg.reply(` has attacked and rolled ${attack}.${attack>=8? ' DISARM!': ''}`  )
             },
         }
     },
