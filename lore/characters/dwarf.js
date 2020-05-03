@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'dwarf',
     data: {
     name: 'Werewolf (not a dwarf)',
     about: 'Not much is known about the Mauling Induced Neurological Disease (M.I.N.D.); Lycanthropy. '+

@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'bannerman',
     data: {
         name: 'Bannerman',
         about: 'The bannermen were establish when a malcontented misinformed mob mobbed a squad, believing '+

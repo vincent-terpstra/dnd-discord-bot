@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'wizard',
     data: {
         name: 'Wizard School Dropout',
         about: 'An underachiever at The Academy, you were expelled when <INSERT tragic backstory>',
@@ -27,7 +26,7 @@ module.exports = {
         mage: { 
             desc: `Move objects, with your mind!`,
             verb: `gave it a push`,
-            roll: `1d20 2*int`
+            roll: "1d20 2*int"
         }
 
     },

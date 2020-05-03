@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'corpse',
     data: {
         name: 'Corpse Hauler',
         about: '\"Bring out your dead!\" You would bellow, as you wheeled your wagon'+

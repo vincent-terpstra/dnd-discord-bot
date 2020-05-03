@@ -1,4 +1,4 @@
-const library = require('../library/library.js')
+const library = require('../lore/library.js')
 
 module.exports = {
     name: 'library',

@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'zombie',
     data: {
         name: 'Zombie',
         about: `You didn't ask to be reborn, stumbling about and moaning brainnsss. But now Master has abandoned (or forgotten about) you, and you are forced to fend for yourself.`,

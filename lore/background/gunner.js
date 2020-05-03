@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'gunner',
     data: {
         name: 'Sergent Gunner First Class',
         about: 'Some fifty years ago the Duke decreed pigeons as vagrants, vandals and vermin.' +

@@ -7,7 +7,7 @@ created using Discord API and node.js
 -  Replace Bot Token with your own Discord Bot Token
 -  Insert your name for master
 
--  Rename character-loader.tmp.json >> character-loader.json
+-  Rename character.tmp.json >> character.json
 -  Insert player data as: "username": ["role" "species" "background" "..."]
 
 -  Follow Discord bot deploy instructions

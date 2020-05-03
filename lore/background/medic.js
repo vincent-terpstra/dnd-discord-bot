@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'medic',
     data:{
         name:'Medic',
         about: 'The medic corps was established when Sergent Nobbs abandoned his patrol and returned to the barracks due to a papercut.'+

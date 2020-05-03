@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'meatshield',
     data: {
         name: 'Front Line Meatshield',
         about: 'The front line staple of any army. You would mindlessly charge with the mob,'+ 

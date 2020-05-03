@@ -1,8 +1,8 @@
 const discord = require("discord.js")
 
 const{master} = require('../config.json')
-const loader = require('../library/character-loader.json')
-const alias = require("../library/alias.json")
+const loader = require('../character.json')
+const alias = require("./alias.json")
 
 const fs = require('fs');
 const aboutValues = new discord.Collection();
@@ -10,7 +10,7 @@ load = function(str){
     const files = fs.readdirSync(`./lore/${str}`).filter(file=>file.endsWith('.js'))
     for(const file of files){
     const about = require(`../lore/${str}/${file}`);
-    aboutValues.set(about.name, about);
+    aboutValues.set(file.slice(0, -3), about);
     }
 }
 
@@ -166,7 +166,7 @@ class Character {
             if(roll.func)
                 roll.func(msg, args, this)
             else if(roll.roll)
-                msg.reply(` ${roll.verb} for ${this.crit(roll.roll)}!`)
+                msg.channel.send(`${roll.actor || msg.author} ${roll.verb} for ${this.crit(roll.roll)}!`)
             return true;
         }
         return false;
@@ -195,13 +195,20 @@ module.exports = {
                 return char;
             }
         }
-        if(msg.author.username === master && args.length == 1){
+        if(msg.author.username === master && args.length >= 1){
             let make = msg.mentions.users.first();
-            if(make == undefined)
-                return;
-            let char = load(make)
-            char.message(msg.author)
-            this.characterSheets.set(msg.author, char);   
+            if(make != undefined){
+                let char = load(make)
+                char.message(msg.author)
+                this.characterSheets.set(msg.author, char); 
+            } else {
+                const char = new Character(msg.author)
+                args.map(
+                    value => char.addAbout(value)
+                )
+                this.characterSheets.set(msg.author, char)
+                char.message()
+            }
         } else {
             load(msg.author).message()
         }

@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'golem',
     data: {
         name: 'Golem',
         about: `A constructed creature of living clay, Golems are often used as workers in high intensity areas like forges. This has caused the rumor that Golems are quite stupid. A remote monestary in the Alpines has proven this incorrect, with Golem minds answering questions such as the meaning of life, and the dangers of AI.`,

@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'codpiece',
     data: {
         name: 'Dazzling Ruby codpiece',
         effect: 'gain +3 when persuading using int',

@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'gear',
     data: {
         name: 'City Watch Gear',
         uniform: 'Red shirt and brown trousers',
@@ -9,7 +8,7 @@ module.exports = {
     rolls: {
         smash: { 
             desc: `Smash the enemy! Stun on 10! alias[stun]`,
-            roll: `1d6 2*str`,
+            roll: "1d6 2*str",
             func: function(msg, args, char){
                 let dice = char.dice(this.roll);
                 let attack = dice[0]

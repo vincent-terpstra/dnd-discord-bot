@@ -1,5 +1,5 @@
-const library = require('./library/library.js');
-const alias = require('./library/alias.json')
+const library = require('./lore/library.js');
+const alias = require('./commands/alias.json')
 const { characterSheets } = require('./commands/character.js')
 const { master, prefix, token } = require('./config.json');
 

@@ -1,5 +1,4 @@
 module.exports = {
-    name: 'ring',
     data: {
         name: 'Charred Ring',
         about: 'A blackened that shrouds the user in darkness',

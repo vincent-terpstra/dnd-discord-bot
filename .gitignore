@@ -1,5 +1,6 @@
 #has access to bot key, master user name
 config.json
+#discord names/userid
+character.json
 /node_modules/*
 /node_modules/.bin/*
-library/character-loader.json
