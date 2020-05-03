@@ -88,9 +88,8 @@ class Character {
                 let limit = roll[1].limit >= 0 ? `(limit ${roll[1].limit})` : ''
                 reply.push(`!${roll[0]}: ${roll[1].desc} ${limit}`)
                 if(roll[1].roll)
-                    reply.push(`\t(roll) ${roll[1].roll}`)
-                        
-        }
+                    reply.push(`\t(roll) ${roll[1].roll}`)      
+            }
         )
         username.send(reply, {static: true})
         reply = []
@@ -145,19 +144,13 @@ class Character {
 
     runCommand(msg, cmd, args){
         if(this.traits.has(cmd)){
-            let roll = Math.floor(Math.random() * 20) + 1;
-            let end = ""
-            if(roll == 20)
-                end = "(Crit Success)!"
-            if(roll == 1)
-                end = "(Crit Failure)!"
-
-            msg.channel.send(`${this.username} rolled ${cmd}: ${roll + this.traits.get(cmd)} ${end}`)
+            let roll = this.crit(`${this.traits.get(cmd)} 1d20`)
+            msg.channel.send(`${this.username} rolled ${cmd}: ${roll}!`)
             return true;
         } else if(this.effects.has(cmd)){
             let roll = this.effects.get(cmd);
             if(roll.limit >= 0){
-                if(roll.limit > 0)
+                if(roll.limit > 0) 
                     roll.limit --
                 else
                     return false
@@ -167,6 +160,10 @@ class Character {
                 roll.func(msg, args, this)
             else if(roll.roll)
                 msg.channel.send(`${roll.actor || msg.author} ${roll.verb} for ${this.crit(roll.roll)}!`)
+            else {
+                const saving = roll.saving ? ` (Saving Throw ${roll.saving}!)` : ''; 
+                msg.channel.send(`${roll.actor || msg.author} ${roll.desc}!${saving}`)
+            }
             return true;
         }
         return false;

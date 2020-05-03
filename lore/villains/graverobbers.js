@@ -1,19 +1,19 @@
 module.exports = {
     data: {
-        name: 'Remi',
+        name: 'Three graverobbers from the Graverobbers guild',
     },
     rolls: {
-        chomp: { 
-            actor: 'The raptor',
-            desc: `The raptor eats a rat!`,
-            verb: `chomps the rat, blood spurts everywhere!`,
-            roll: `9`
+        shovel: { 
+            actor: 'The tall lanky fellow',
+            desc: `Attack with the shovel!`,
+            verb: `swings his shovel`,
+            roll: `1d10`
         },
-        bite: { 
-            actor: 'The raptor',
-            desc: `The raptor bites!`,
+        pickaxe: { 
+            actor: 'Large swarthy figure',
+            desc: `Attack with the pickaxe!`,
             verb: `bites`,
-            roll: `1d10 2`
+            roll: `1d8 2`
         },
         claw: {
             actor: 'The raptor',
