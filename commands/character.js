@@ -7,15 +7,17 @@ const alias = require("../library/alias.json")
 const fs = require('fs');
 const aboutValues = new discord.Collection();
 load = function(str){
-    const files = fs.readdirSync(`./${str}`).filter(file=>file.endsWith('.js'))
+    const files = fs.readdirSync(`./lore/${str}`).filter(file=>file.endsWith('.js'))
     for(const file of files){
-    const about = require(`../${str}/${file}`);
+    const about = require(`../lore/${str}/${file}`);
     aboutValues.set(about.name, about);
     }
 }
 
 load('characters')
+load('background')
 load('villains')
+load('items')
 
 class Character {
     constructor(username){
@@ -73,9 +75,8 @@ class Character {
     message(username){
         if(username == undefined)
             username = this.username
-        username.send('<----------------------------------------------------------------------------------------->')
         let reply = [];
-        reply.push(`Character ${this.name}\n\tHealth: ${this.health}`)
+        reply.push(`:chess_pawn:Character ${this.name}\n\tHealth: ${this.health}`)
         Array.from(this.traits).map(
             pair => ( reply.push(`\t${(pair[1] < 0 ? "" : " ") + pair[1]} : ${pair[0]}`))
         )

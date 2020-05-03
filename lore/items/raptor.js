@@ -2,7 +2,7 @@ module.exports = {
     name: 'raptor',
     data: {
         name: 'Raptor Ranger',
-        about: 'Control Remi, the lost pet'
+        about: 'Control Remi, the lost pet (once per player cycle)'
     },
     rolls: {
         fetch: { 

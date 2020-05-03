@@ -3,7 +3,8 @@ module.exports = {
     data: {
         name: 'City Watch Gear',
         uniform: 'Red shirt and brown trousers',
-        truncheon: 'A brutal weapon for a less civilized age'
+        truncheon: 'A brutal weapon for a less civilized age',
+        badge: 'Cheap tin, wear it with pride'
     },
     rolls: {
         smash: { 
