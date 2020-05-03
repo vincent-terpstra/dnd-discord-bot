@@ -19,6 +19,17 @@ module.exports = {
                 msg.reply(`has a surge of wild magic and is now ${this.effects[Math.floor(Math.random() * this.effects.length)]}`)},
                 effects: ['bold', 'coward', 'loud', 'quiet', 'vigor', 'nausea', 'lucky', 'clumsy']
         },
+        flame: { 
+            desc: `Create a small flame in your hand!`,
+            verb: `played with fire`,
+            roll: `1d20 int`
+        },
+        mage: { 
+            desc: `Move objects, with your mind!`,
+            verb: `gave it a push`,
+            roll: `1d20 2*int`
+        }
+
     },
     buff: {'int': 3, 'con': -1}
 }

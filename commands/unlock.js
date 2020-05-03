@@ -4,16 +4,14 @@ module.exports = {
     name: 'unlock',
     desc: 'Opens new roles for players',
     usage: '<@player> <role>',
-    cooldown: 10,
+    cooldown: 1,
     master: true,
     execute(msg, array){
-        const player = msg.mentions.users.first();
-        if(player != undefined && array[1]){
-            if(characterSheets.has(player)){
-                let char = characterSheets.get(player)
-                char.addAbout(array[1])
-                char.message();
-            }
+        let user = msg.mentions.users.first()
+        if(characterSheets.has(user)){
+            let char =characterSheets.get(user)
+            char.addAbout(array[1])
+            char.message()
         }
     }
 }

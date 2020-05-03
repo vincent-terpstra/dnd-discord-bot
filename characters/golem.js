@@ -10,14 +10,15 @@ module.exports = {
     },
     rolls: {
         clay: { 
-            desc: `Heals yourself and mends wounds (limit 3)`,
-            roll: '4 2d4',
+            desc: `Heals yourself and mends wounds`,
+            roll: 'con 2d4 4',
+            limit: 3,
             func: function(msg, args, char){
-                let heal = char.roll(this.roll)
-                char.health += heal;
+                let heal = char.dice(this.roll)
+                char.health += heal[0];
                 if(char.health > char.maxhealth)
                     char.health = char.maxhealth
-                msg.reply(` has healed ${heal}, they have ${char.health} health!`)},
+                msg.reply(` has healed ${heal[0]}${heal[1]}! They have ${char.health} health!`)},
         },
     },
     buff: {'int':-1, 'str': 1},

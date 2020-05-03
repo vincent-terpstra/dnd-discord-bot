@@ -10,16 +10,18 @@ module.exports = {
             desc: `Smash the enemy! Stun on 10! alias[stun]`,
             roll: `1d6 2*str`,
             func: function(msg, args, char){
-                let attack = char.roll(this.roll)
-                msg.reply(` has bludgeoned and rolled ${attack}.${attack >= 10? ' A STUN!': ''}`  )
+                let dice = char.dice(this.roll);
+                let attack = dice[0]
+                msg.reply(` has bludgeoned and rolled ${attack+(attack>=10? ' A STUN': '')+dice[1]}!`  )
             },
         },
         disarm:{
             desc: `Bash the enemy! Disarm on 8! alias[attack]`,
             roll: `2d4 str`,
             func: function(msg, args, char){
-                let attack = char.roll(this.roll)
-                msg.reply(` has attacked and rolled ${attack}.${attack>=8? ' DISARM!': ''}`  )
+                let dice = char.dice(this.roll);
+                let attack = dice[0]
+                msg.reply(` has attacked and rolled ${attack+(attack>=8? ' DISARM': '')+dice[1]}!`  )
             },
         }
     },

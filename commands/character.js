@@ -5,14 +5,17 @@ const loader = require('../library/character-loader.json')
 const alias = require("../library/alias.json")
 
 const fs = require('fs');
-const aboutFiles = fs.readdirSync('./characters').filter(file=>file.endsWith('.js'))
-
 const aboutValues = new discord.Collection();
-
-for(const file of aboutFiles){
-  const about = require(`../characters/${file}`);
-  aboutValues.set(about.name, about);
+load = function(str){
+    const files = fs.readdirSync(`./${str}`).filter(file=>file.endsWith('.js'))
+    for(const file of files){
+    const about = require(`../${str}/${file}`);
+    aboutValues.set(about.name, about);
+    }
 }
+
+load('characters')
+load('villains')
 
 class Character {
     constructor(username){
@@ -28,9 +31,19 @@ class Character {
             val => {this.traits.set(val, -1);}
         )
     }
-
     roll(args){
-        let sum = 0;
+        return this.dice(args)[0]
+    }
+
+    crit(args){
+        let vals = this.dice(args)
+        return vals[0] + vals[1]
+    }
+
+    dice(args){
+        let sum = 0
+        let crit = true
+        let fail = true
         args.split(/ +/).map(
             a => {
                 if(a.includes('*')){
@@ -42,7 +55,10 @@ class Character {
                 } else if (a.includes('d')){
                     let sp = a.split('d')
                     while(sp[0] -- > 0){
-                        sum += Math.floor(Math.random() * sp[1] + 1)
+                        let roll = Math.floor(Math.random() * sp[1] + 1)
+                        sum += roll
+                        crit = crit && roll == sp[1]
+                        fail = fail && roll == 1
                     }
                 } else if(this.traits.has(alias[a])){
                     sum += this.traits.get(alias[a])
@@ -51,29 +67,32 @@ class Character {
                 }
             }
         )
-
-        return sum
+        return [sum, crit  ? '!!' : (fail ? ':x:':'')]
     }
 
     message(username){
         if(username == undefined)
             username = this.username
-
+        username.send('<----------------------------------------------------------------------------------------->')
         let reply = [];
         reply.push(`Character ${this.name}\n\tHealth: ${this.health}`)
         Array.from(this.traits).map(
             pair => ( reply.push(`\t${(pair[1] < 0 ? "" : " ") + pair[1]} : ${pair[0]}`))
         )
         reply.push(`try !<trait> or !<first 3 letters of trait> to roll\n`)
-        
+        username.send(reply, {static: true})
+        reply = []
         Array.from(this.effects).map(
-            roll => { reply.push(`!${roll[0]}: ${roll[1].desc || roll[1].usage}`)
-                        if(roll[1].roll){
-                            reply.push(`\t(roll) ${roll[1].roll}`)
-                        }
+            roll => {
+                let limit = roll[1].limit >= 0 ? `(limit ${roll[1].limit})` : ''
+                reply.push(`!${roll[0]}: ${roll[1].desc} ${limit}`)
+                if(roll[1].roll)
+                    reply.push(`\t(roll) ${roll[1].roll}`)
+                        
         }
         )
-        reply.push('')
+        username.send(reply, {static: true})
+        reply = []
         Array.from(this.about).map(
             trait => {
                 Object.entries(trait[1].data).map(
@@ -97,7 +116,7 @@ class Character {
     addAbout(str){
         if(!aboutValues.has(str))
             return;
-            
+
         let add = aboutValues.get(str);
         this.about.set(str, add);
 
@@ -136,9 +155,17 @@ class Character {
             return true;
         } else if(this.effects.has(cmd)){
             let roll = this.effects.get(cmd);
-            if(roll.func){
-                roll.func(msg, args, this)
+            if(roll.limit >= 0){
+                if(roll.limit > 0)
+                    roll.limit --
+                else
+                    return false
             }
+
+            if(roll.func)
+                roll.func(msg, args, this)
+            else if(roll.roll)
+                msg.reply(` ${roll.verb} for ${this.crit(roll.roll)}!`)
             return true;
         }
         return false;
