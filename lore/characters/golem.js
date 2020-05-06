@@ -5,7 +5,7 @@ module.exports = {
         flaw: 'Silicon Form - your physical vs. mental range from +2 to -2 depending on temperature\n'+
             '\tHeat makes you strong and dumb, while cold makes you weaker yet smarter',
         living_clay: 'Allows the Golem to heal themself',
-        weather: 'warm (int -1, str +1)'
+        temperature: 'mild +0'
     },
     rolls: {
         clay: { 
@@ -20,6 +20,6 @@ module.exports = {
                 msg.reply(` has healed ${heal[0]}${heal[1]}! They have ${char.health} health!`)},
         },
     },
-    buff: {'int':-1, 'str': 1},
+    temp: 0,
     health: 16
 }
