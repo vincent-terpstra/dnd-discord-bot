@@ -4,7 +4,7 @@ module.exports = {
     },
     rolls: {
         shovel: { 
-            actor: 'The tall lanky fellow',
+            actor: 'The tall lanky crook',
             desc: `Attack with the shovel!`,
             verb: `swings his shovel`,
             roll: `1d10`
@@ -15,21 +15,37 @@ module.exports = {
             verb: `bites`,
             roll: `1d8 2`
         },
-        claw: {
-            actor: 'The raptor',
-            desc: `The raptor scratches!`,
-            verb: `claws`,
-            roll: `1d10 2`
+        blind: {
+            actor: 'The short stout fellow',
+            desc: `Try to blind!`,
+            verb: `tries to blind you with his lantern`,
+            saving: 'improv'
         },
-        growls: {
-            actor: 'The raptor',
-            desc: `growls, a low menacing rumble`,
-            effect: `fear`,
-            saving: 'con'
+        lantern: {
+            actor: 'The short stout fellow',
+            desc: `attack with the lantern`,
+            verb: `shatters the lantern across your arm`,
+            roll: `1d4 -1`
         },
-        fetch: {
-            actor: 'The raptor',
-            desc: 'drops the baton and waits in anticipation'
+        fire: {
+            actor: ':flame:You',
+            verb: 'are on fire!:flame: 3dmg at the start of each turn',
+            saving: 'con 14 during turn'
+        },
+        shove: {
+            actor: 'The gravedigger',
+            verb: `pushs you towards the empty grave`,
+            saving: 'str 15'
+        },
+        pocketdirt: {
+            actor: 'The crook',
+            verb: 'tries to blind you with pocket dirt',
+            saving: 'con 15'
+        },
+        runaway: {
+            actor: 'The graverobber',
+            verb: 'Tries to escape',
+            roll: '1d20 -4'
         }
     }
 }

@@ -69,7 +69,7 @@ class Character {
                 }
             }
         )
-        return [sum, crit  ? '!!' : (fail ? ':x:':'')]
+        return [sum, crit  ? ':fire:' : (fail ? ':x:':'')]
     }
 
     message(username){
@@ -82,17 +82,17 @@ class Character {
         )
         reply.push(`try !<trait> or !<first 3 letters of trait> to roll\n`)
         username.send(reply, {static: true})
-        reply = []
+        reply = ['']
         Array.from(this.effects).map(
             roll => {
                 let limit = roll[1].limit >= 0 ? `(limit ${roll[1].limit})` : ''
-                reply.push(`!${roll[0]}: ${roll[1].desc} ${limit}`)
+                reply.push(`!${roll[0]}: ${roll[1].desc || roll[1].verb} ${limit}`)
                 if(roll[1].roll)
                     reply.push(`\t(roll) ${roll[1].roll}`)      
             }
         )
         username.send(reply, {static: true})
-        reply = []
+        reply = ['']
         Array.from(this.about).map(
             trait => {
                 Object.entries(trait[1].data).map(
@@ -162,7 +162,7 @@ class Character {
                 msg.channel.send(`${roll.actor || msg.author} ${roll.verb} for ${this.crit(roll.roll)}!`)
             else {
                 const saving = roll.saving ? ` (Saving Throw ${roll.saving}!)` : ''; 
-                msg.channel.send(`${roll.actor || msg.author} ${roll.desc}!${saving}`)
+                msg.channel.send(`${roll.actor || msg.author} ${roll.verb}!${saving}`)
             }
             return true;
         }
@@ -201,7 +201,9 @@ module.exports = {
             } else {
                 const char = new Character(msg.author)
                 args.map(
-                    value => char.addAbout(value)
+                    value =>{
+                        char.addAbout(value)
+                    }
                 )
                 this.characterSheets.set(msg.author, char)
                 char.message()

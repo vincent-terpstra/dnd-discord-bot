@@ -13,7 +13,7 @@ module.exports = {
             actor: 'The raptor',
             desc: `The raptor bites!`,
             verb: `bites`,
-            roll: `1d10 2`
+            roll: `1d4 -1`
         },
         claw: {
             actor: 'The raptor',
@@ -21,15 +21,15 @@ module.exports = {
             verb: `claws`,
             roll: `1d10 2`
         },
-        growls: {
+        growl: {
             actor: 'The raptor',
-            desc: `growls, a low menacing rumble`,
+            verb: `growls, a low menacing rumble`,
             effect: `fear`,
             saving: 'con'
         },
         fetch: {
             actor: 'The raptor',
-            desc: 'drops the baton and waits in anticipation'
+            verb: 'drops the baton and waits in anticipation'
         }
     }
 }

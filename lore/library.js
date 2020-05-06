@@ -65,5 +65,7 @@ module.exports = {
         'Winged bat, break flesh and bone\n'+
         'For it\'s sins Ker-plunk will atone',
 
-    remi: 'Someones pet, now fully grown, abandoned in the sewers.'
+    remi: 'Someones pet, now fully grown, abandoned in the sewers.',
+    oldwatch: 'They died as heroes',
+    bread: 'Dwarven domestic disputes are oftens settled with food fights. Leave it to the dwarfs to perfect any weapon, as dwarven throwing bread demonstrates.'
 }
