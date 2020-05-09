@@ -8,5 +8,6 @@ module.exports = {
         shroud: 'filmy cotton gauze - Used for bandages or burial',
         distilled_moonlight: 'vial of Aqua Lumien - Purges toxins',
         thread: 'cat-gut and fish bone - Reattachs limbs',
-    }
+    },
+    buff: {'int':1},
 }

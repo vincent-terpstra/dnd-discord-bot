@@ -21,7 +21,9 @@ module.exports = {
                         traits.set('intelligence', traits.get('intelligence') - diff)
                         traits.set('strength', traits.get('strength') + diff)
                         
-                        golem.data.temperature = `${strings[tmp + 3]} int(${-tmp}) str(${tmp})`
+                        let data = `${strings[tmp + 3]}! int(${-tmp}) str(${tmp})`
+                        golem.data.temperature = data
+                        msg.channel.send(`${sheet[1].username} is now ${data}!`)
                     }
             }
         )

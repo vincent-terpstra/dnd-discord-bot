@@ -50,7 +50,8 @@ module.exports = {
         'NO opportunity attacks or reactions\n'+
         'DISTANCES: long, medium, short, melee; each taking a turn of movement\n'+
         'Advantage and disadvantage still exist (double rolls)\n'+
-        'TWO actions per turn; only ONE may be an ATTACK',
+        'TWO actions per turn; only ONE may be an ATTACK\n' +
+        'NO rolling to see if an attack hits, crits don\'t double dmg rather they have effects' ,
     traits: 
         'Intelligence - Mental abiltity and how you use it\n'+
         'Insight - Awareness of your surroundings\n' +

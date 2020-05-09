@@ -7,5 +7,20 @@ module.exports = {
         banner: 'The sigil of Ker Plunk - A fist choking a rooster.',
         rally: 'all allies gain advantage on (or may reroll), a saving throw (does not stack)',
         intimidate: 'Raise your banner to intimidate (+1)'
-    }
+    },
+    rolls: {
+        rally: { 
+            desc: `Rally the troops (all allies gain adv / may reroll) a saving throw`,
+            limit: 3,
+            func: function(msg, args){
+                msg.reply(`rally the troops! (all allies gain adv / may reroll) a saving throw (not stacking)`)
+            }
+        },
+        intimidate: { 
+            desc: `Raise your banner to intimidate(+2)`,
+            limit: 3,
+            verb: `raised his banner! To roll for intimidation`,
+            roll: `1d20 str 2`
+        }
+    },
 }
