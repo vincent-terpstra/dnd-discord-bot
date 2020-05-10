@@ -23,7 +23,7 @@ module.exports = {
             verb: `played with fire`,
             roll: `1d20 int`
         },
-        mage: { 
+        hand: { 
             desc: `Move objects, with your mind!`,
             verb: `gave it a push`,
             roll: "1d20 2*int"

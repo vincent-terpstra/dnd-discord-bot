@@ -176,26 +176,26 @@ module.exports = {
     name: 'character',
     desc: 'Your player character',
     usage:'',
-    execute(msg, args){
-        const load = author => {
-            if(this.characterSheets.has(author)){
+    get: function(author){
+        if(this.characterSheets.has(author)){
                 return this.characterSheets.get(author)
-            } else {
-                const char = new Character(author)
-                this.characterSheets.set(author, char)
-                if(loader[author.username])
-                loader[author.username].map(
-                    value => char.addAbout(value)
-                )
-                char.addAbout('gear')
-    
-                return char;
-            }
+        } else {
+            const char = new Character(author)
+            this.characterSheets.set(author, char)
+            if(loader[author.username])
+            loader[author.username].map(
+                value => char.addAbout(value)
+            )
+            char.addAbout('gear')
+
+            return char;
         }
+    },
+    execute(msg, args){
         if(msg.author.username === master && args.length >= 1){
             let make = msg.mentions.users.first();
             if(make != undefined){
-                let char = load(make)
+                let char = this.get(make)
                 char.message(msg.author)
                 this.characterSheets.set(msg.author, char); 
             } else {
@@ -209,7 +209,7 @@ module.exports = {
                 char.message()
             }
         } else {
-            load(msg.author).message()
+            this.get(msg.author).message()
         }
     } 
 }

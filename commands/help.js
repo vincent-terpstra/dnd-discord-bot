@@ -11,7 +11,7 @@ module.exports = {
             masterString = cacheString;
 
             commands.map(command =>{
-                let str = `\t${prefix} ${command.name}: ${command.desc}\n`
+                let str = `\t${prefix}${command.name}: ${command.desc}\n`
                 if(command.master){
                     masterString += str;
                 } else {
