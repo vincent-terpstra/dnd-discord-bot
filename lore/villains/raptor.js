@@ -28,7 +28,7 @@ module.exports = {
             saving: 'con'
         },
         fetch: {
-            actor: 'The raptor',
+            actor: 'Jojo',
             verb: 'drops the baton and waits in anticipation'
         }
     }

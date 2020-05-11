@@ -176,6 +176,7 @@ module.exports = {
     name: 'character',
     desc: 'Your player character',
     usage:'',
+    cooldown: .5,
     get: function(author){
         if(this.characterSheets.has(author)){
                 return this.characterSheets.get(author)

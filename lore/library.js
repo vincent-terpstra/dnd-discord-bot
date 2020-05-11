@@ -4,8 +4,8 @@ module.exports = {
         "\tOrigin: Meatshield, Corpse Hauler, Wizard School Dropout\n" +
         "\tClass: Bannerman, Medic, Gunner Sergent First Class\n" +
         "!roll for Initiative!!!",
-    kerplunk: 'The Great City\n'+
-        '\tPopulation 21000\n'+
+    kerplunk: 'Ker-Plunk, The Great City\n'+
+        '\tPopulation 38000\n'+
         '\tNotable Events:\n'+
         '\t\t1318MON The Monarchy Raaster is overthrown, and the rebels form the City Council. They rallying under the banner of a "Fist choking a Rooster" a fitting sigil for the city that never sleeps.\n'+
         '\t\t150CC   The City Council institutionalizes crime by creating the Guilds. Now crime is conducted in a bureaucratic fashion, and criminals pay their taxes.\n'+
@@ -38,7 +38,7 @@ module.exports = {
         ' They\'ll make you forget about your day, and give you such a throbbing headache in the morning.' +
         ' That you will feel as the fiends of hell are marching to bring in the apocalypse.',
     deathsight: 'I see dead people',
-    froyo: 'A hobbit, ratcatcher',
+    froyo: 'Froyo: A hobbit, ratcatcher',
     eastwatch: ':musical_note: East watch (ah-ah-ah)\nRival of the West Watch (ah-ah-ah)\n'+
         'Champions of Ker-plunk (ah-ah-ah)\n\nThey\'re defenders of Justice!\n'+
         'and freedom!\nfor everyone!(x3) :musical_note:\n (tune of \"The Nightman Cometh\")',
@@ -66,7 +66,7 @@ module.exports = {
         'Winged bat, break flesh and bone\n'+
         'For it\'s sins Ker-plunk will atone',
 
-    remi: 'Someones pet, now fully grown, abandoned in the sewers.',
+    jojo: 'Jojo: Someones pet, now fully grown, abandoned in the sewers.',
     oldwatch: 'They died as heroes',
     bread: 'Dwarven domestic disputes are oftens settled with food fights. Leave it to the dwarfs to perfect any weapon, as dwarven throwing bread demonstrates.'
 }
