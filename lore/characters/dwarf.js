@@ -12,17 +12,13 @@ module.exports = {
     buff: {'ins' : 2, 'str': 1},
     rolls: {
         lunch: { 
-            desc: `A dwarven combat snack (disables throw)`,
+            desc: `A dwarven combat snack (disables throw, once per patrol)`,
             roll: '2d4 2*str',
             limit: 1,
             func: function(msg, args, char){
-                let heal = char.dice(this.roll)
-                char.health += heal[0];
-                if(char.health > char.maxhealth)
-                    char.health = char.maxhealth
-                
                 msg.reply(` has stopped for lunch`)
-                msg.reply(` has healed ${heal[0]}${heal[1]}! They have ${char.health} health!`)},
+                char.heal( msg, this.roll)
+            },
         },
         throw: { 
             desc: `Throw the dwarven throwing bread`,

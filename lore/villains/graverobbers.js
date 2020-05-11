@@ -12,7 +12,7 @@ module.exports = {
         pickaxe: { 
             actor: 'Large swarthy figure',
             desc: `Attack with the pickaxe!`,
-            verb: `bites`,
+            verb: `attack with his pickaxe`,
             roll: `1d8 2`
         },
         blind: {

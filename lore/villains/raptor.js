@@ -1,6 +1,6 @@
 module.exports = {
     data: {
-        name: 'Remi',
+        name: 'Jojo',
     },
     rolls: {
         chomp: { 

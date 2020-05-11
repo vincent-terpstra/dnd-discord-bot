@@ -169,6 +169,15 @@ class Character {
         return false;
     }
 
+    heal(msg, roll){
+        let heal = this.dice(roll)
+        this.health += heal[0];
+        if(this.health > this.maxhealth)
+            this.health = this.maxhealth
+
+        msg.channel.send(`${this.username} has healed ${heal[0]}${heal[1]}! They have ${this.health} health!`)
+    }
+
 }
 
 module.exports = {

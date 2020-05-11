@@ -1,6 +1,6 @@
 const library = require('./lore/library.js');
 const alias = require('./commands/alias.json')
-const { characterSheets } = require('./commands/character.js')
+const characters = require('./commands/character.js')
 const { master, prefix, token } = require('./config.json');
 
 const Discord = require("discord.js")
@@ -51,8 +51,7 @@ client.on("message", msg => {
     } else if(library[commandName]){
         msg.channel.send(library[commandName])
         return;
-    } else if(characterSheets.has(msg.author)){
-        if(characterSheets.get(msg.author).runCommand(msg, commandName, args))
+    } else if(characters.get(msg.author).runCommand(msg, commandName, args)){
           return;
     }
     //FAIL message
