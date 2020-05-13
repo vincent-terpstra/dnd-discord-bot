@@ -1,4 +1,4 @@
-const { characterSheets } = require('./character.js')
+const characters = require('./character.js')
 
 module.exports = {
     name: 'damage',
@@ -9,14 +9,15 @@ module.exports = {
     execute(msg, array){
         const player = msg.mentions.users.first();
         if(player != undefined && array[1] >= 0){
-            if(characterSheets.has(player)){
-                let char = characterSheets.get(player);
-                char.health -= array[1];
-                if(char.health < 0)
-                    char.health = 0
-                
-                msg.channel.send(`${char.username} has taken ${array[1]} damage! They have ${char.health} health!`)
-            }
+            
+        let char = characters.get(player);
+        
+        char.health -= array[1];
+        if(char.health < 0)
+            char.health = 0
+        
+        msg.channel.send(`${char.username} has taken ${array[1]} damage! They have ${char.health} health!`)
+            
         }
     }
 }

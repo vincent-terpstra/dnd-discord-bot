@@ -4,7 +4,7 @@ module.exports = {
     },
     rolls: {
         chomp: { 
-            actor: 'The raptor',
+            actor: 'The not-a-croc',
             desc: `The raptor eats a rat!`,
             verb: `chomps the rat, blood spurts everywhere!`,
             roll: `9`
@@ -22,7 +22,7 @@ module.exports = {
             roll: `1d10 2`
         },
         growl: {
-            actor: 'The raptor',
+            actor: 'The terrifying ferocious beast',
             verb: `growls, a low menacing rumble`,
             effect: `fear`,
             saving: 'con'

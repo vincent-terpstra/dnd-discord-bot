@@ -10,4 +10,17 @@ module.exports = {
         thread: 'cat-gut and fish bone - Reattachs limbs',
     },
     buff: {'int':1},
+    rolls: {
+        heal: { 
+            desc: `Use your limited medical expertise to heal (full turn)`,
+            func: function(msg, args){
+                const player = msg.mentions.users.first()
+                if(player != undefined){
+                    msg.channel.send(`${player}, where does it hurt?`)
+                    require('../../commands/character.js').get(player).heal(msg, this.roll)
+                }
+            },
+            roll: `4d6 int 1d-12`
+        },
+    }
 }

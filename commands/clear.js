@@ -1,7 +1,7 @@
 module.exports = {
     name: 'clear',
     desc: 'clears chat logs from the channel',
-    cooldown: 10,
+    cooldown: 1,
     master: true,
     execute(msg, array){
         let amount = array[0] || 2

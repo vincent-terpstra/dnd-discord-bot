@@ -7,7 +7,7 @@ module.exports = {
             '\tThat giant animated skeleton over there? Yea, that would be magic!',
         flame: 'By snapping your fingers you are able to create a flame on the tip of your thumb\n'+
             '\tCould be done with flint and sleight of hand (but where is the fun in that)',
-        mage_hand: 'Telekinesis, move objects with your mind!'+
+        mage_hand: 'Telekinesis, move objects with your mind! (range short)'+
             '\n\tMust succeed a int check, and the object should be less then 10 kg'
         
     },

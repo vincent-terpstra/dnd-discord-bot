@@ -68,5 +68,8 @@ module.exports = {
 
     jojo: 'Jojo: Someones pet, now fully grown, abandoned in the sewers.',
     oldwatch: 'They died as heroes',
-    bread: 'Dwarven domestic disputes are oftens settled with food fights. Leave it to the dwarfs to perfect any weapon, as dwarven throwing bread demonstrates.'
+    bread: 'Dwarven domestic disputes are oftens settled with food fights. Leave it to the dwarfs to perfect any weapon, as dwarven throwing bread demonstrates.',
+    thieves: 'A gentlemen\'s guild, where the bored elite try to oneup the others in daring acts of thievery',
+    assassins: 'Have you paid your dues?',
+    robin: 'Sir Robin Jordan\n\tA gentleman and philanthropist, leader of the thieves guild'
 }

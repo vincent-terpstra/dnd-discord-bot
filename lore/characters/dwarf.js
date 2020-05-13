@@ -21,7 +21,7 @@ module.exports = {
             },
         },
         throw: { 
-            desc: `Throw the dwarven throwing bread`,
+            desc: `Throw the dwarven throwing bread (range medium)`,
             roll: '3d4',
             verb: 'chucked a chunk of bread'
         },
