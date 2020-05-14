@@ -5,7 +5,7 @@ module.exports = {
         about: 'Such magnificent family jewels! That guy must be someone important, a Noble or something...',
     },
     persuade: { 
-        desc: `Most peasents jump to the whims of nobles!`,
+        desc: `Most peasants jump to the whims of nobles!`,
         verb: `made a compelling argument`,
         roll: `1d20 4 int`
     }

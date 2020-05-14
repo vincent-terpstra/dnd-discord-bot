@@ -12,7 +12,7 @@ module.exports = {
     buff: {'int':1},
     rolls: {
         heal: { 
-            desc: `Use your limited medical expertise to heal (full turn)`,
+            desc: `<@player> Use your limited medical expertise to heal (full turn)`,
             func: function(msg, args){
                 const player = msg.mentions.users.first()
                 if(player != undefined){

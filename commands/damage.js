@@ -12,9 +12,7 @@ module.exports = {
             
         let char = characters.get(player);
         
-        char.health -= array[1];
-        if(char.health < 0)
-            char.health = 0
+        char.health = Math.max(char.health - array[1], 0)
         
         msg.channel.send(`${char.username} has taken ${array[1]} damage! They have ${char.health} health!`)
             
