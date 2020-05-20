@@ -173,6 +173,7 @@ class Character {
         let heal = this.dice(roll)
         this.health = Math.min(this.maxhealth, Math.max(this.health + heal[0], 0))
         msg.channel.send(`${this.username} has healed ${heal[0]}${heal[1]}! They have ${this.health} health!`)
+        return heal
     }
 
 }

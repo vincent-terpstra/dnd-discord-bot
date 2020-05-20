@@ -16,7 +16,7 @@ module.exports = {
             roll: '2d4 2*str',
             limit: 1,
             func: function(msg, args, char){
-                msg.reply(` has stopped for lunch`)
+                msg.reply(` has stopped for a snack`)
                 char.heal( msg, this.roll)
             },
         },

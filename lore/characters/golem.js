@@ -10,7 +10,7 @@ module.exports = {
     rolls: {
         clay: { 
             desc: `Heals yourself and mends wounds`,
-            roll: 'con 1d4 2',
+            roll: 'con 2d4 2',
             limit: 3,
             func: function(msg, args, char){
                 msg.reply(`has been reformed!`)

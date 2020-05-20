@@ -1,4 +1,9 @@
 module.exports = {
+    player4: 'Character Creation\n' +
+        "\tRace: Golem, Zombie, Dwarf, Vampire\n" +
+        "\tOrigin: Meatshield, Corpse Hauler, Wizard School Dropout, Manservant\n" +
+        "\tClass: Bannerman, Medic, Gunner Sergent First Class, Brute\n" +
+        "!roll for Initiative!!!",
     choose: 'Character Creation\n' +
         "\tRace: Golem, Zombie, Dwarf\n" +
         "\tOrigin: Meatshield, Corpse Hauler, Wizard School Dropout\n" +

@@ -1,7 +1,7 @@
 module.exports = {
     data:{
         name:'Medic',
-        about: 'The medic corps was established when Sergent Nobbs abandoned his patrol and returned to the barracks due to a papercut.'+
+        history: 'The medic corps was established when Sergent Nobbs abandoned his patrol and returned to the barracks due to a papercut.'+
             ' After being verbally berated for 5 hours, Sergent Nobbs succumbed to his injuries. R.I.P. Sergent Nobbs.',
         kite_shield: 'Doubles as stretcher or operating table'+
             '\n\tWorn on back\n\tProvides half cover when set in place or running away',
