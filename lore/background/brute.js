@@ -5,6 +5,18 @@ module.exports = {
         history: 'Sometimes you just need an extra body',
         
     },
-    buff: {'str': 1, 'con': 1},
+    rolls: {
+        block: { 
+            desc: `Reduce the next dmg and apply disadvantage`,
+            verb: `blocked with his shield`,
+            roll: `1d4`
+        },
+        bash: { 
+            desc: `Hit with your shield (2nd attack)`,
+            verb: `bashed with his shield`,
+            roll: `1d6 str`
+        }
+    },
+    buff: {'str': 2, 'con': 1},
     
 }

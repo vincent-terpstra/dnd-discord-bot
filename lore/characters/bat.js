@@ -1,7 +1,8 @@
 module.exports = {
     data: {
-        name: 'bat',
-        about: `flying`,
-        undead: 'When you \'die\' decrease your max health by 3, heal to full, and loose a limb'
+        name: 'Vampire Bat',
+        about: `a bat, can do anything a bat could`,
+        ephemeral: `you take max one dmg per hit`,
+        vampire: 'you are in bat form when 5 or less hp'
     },
 }
