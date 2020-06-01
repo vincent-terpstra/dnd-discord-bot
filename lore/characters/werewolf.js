@@ -1,7 +1,8 @@
 module.exports = {
     data: {
         name: 'Werewolf',
-        about: 'AHH-WOOOOOOO!'
+        about: 'AHH-WOOOOOOO!',
+        flaw: 'your character communicates in growls and snarls (and is a large hairy beast)'
     },
     rolls: {
         leap: { 
