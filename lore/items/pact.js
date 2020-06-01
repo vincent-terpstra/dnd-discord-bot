@@ -5,8 +5,8 @@ module.exports = {
     },
     rolls: {
         bind: { 
-            desc: `Merge souls with enemy (2dmg per turn each) adv on attacks`,
-            verb: `My soul to your soul!`
+            desc: `Merge souls with enemy; (2dmg per turn to BOTH bonded), adv on attacks`,
+            verb: `My soul to your soul!\n(2dmg/turn BOTH, adv on attacks)`
         },
         bound:{
             desc: `Gain insight on your bound foe`,

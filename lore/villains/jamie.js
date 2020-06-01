@@ -1,7 +1,9 @@
 module.exports = {
     data: {
-        name: 'Three graverobbers from the Graverobbers guild',
+    name: 'Jamie; a graverobber who works part time as an executioner'
     },
+    health: 20,
+    buff: {'ins' : -2, 'str': -1, 'int':-2, 'con':-1},
     rolls: {
         shovel: { 
             actor: 'The tall lanky crook',

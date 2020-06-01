@@ -92,8 +92,9 @@ class Character {
             }
         )
         username.send(reply, {static: true})
-        reply = ['']
+        reply = ['-><-']
         Array.from(this.about).map(
+            
             trait => {
                 Object.entries(trait[1].data).map(
                     data=> reply.push(`${data[0]} - ${data[1]}`)
@@ -106,11 +107,13 @@ class Character {
                     )
                     reply.push(b)
                 }
-                reply.push('')
+                
+                username.send(reply, {static: true})
+                reply=['-><-']
             }
         )
         
-        username.send(reply, {static: true})
+        
     }
 
     addAbout(str){

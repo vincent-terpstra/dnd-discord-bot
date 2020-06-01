@@ -10,7 +10,6 @@ module.exports = {
         feast: { 
             desc: `Drink from the blood of your enemies`,
             func: function(msg, args, char){
-                console.log(this.roll)
                 let heal = char.heal(msg, this.roll)
                 msg.reply(`has feasted ${heal[0]}${heal[1]} dmg!`)
             },
