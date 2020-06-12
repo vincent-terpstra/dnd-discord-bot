@@ -21,13 +21,17 @@ module.exports = {
                         let diff = tmp - golem.temp;
                         golem.temp = tmp
                         
+                        if(diff == 0) return;
                         let traits = sheet[1].traits;
-                        traits.set('intelligence', traits.get('intelligence') - diff)
-                        traits.set('strength', traits.get('strength') + diff)
                         
                         let data = `${strings[val + 3]}! int(${-tmp}) str(${tmp})`
                         golem.data.temperature = data
-                        msg.channel.send(`${sheet[1].username} is now ${data}!`)
+                        msg.channel.send(`${sheet[1].username} is now ${strings[val + 3]}!`)
+                        
+                        sheet[1].buff(msg, 'int', -diff)
+                        sheet[1].buff(msg, 'str', diff)
+                        
+                        
                     }
             }
         )

@@ -5,6 +5,15 @@ module.exports = {
     desc: 'reads out active players',
     cooldown: 10,
     execute(msg, array){
+       Array.from(msg.mentions.users).map(
+           user=>{
+                let name = user[1].username
+                if(loader[name]){
+                    msg.channel.send(`${name}: ${loader[name].join(', ')}`)
+                }
+            }
+       )
+        /*
         Array.from(msg.channel.guild.members.cache).map(
             user=> {
                 let name = user[1].user.username
@@ -14,5 +23,6 @@ module.exports = {
                 
             }
         )
+        */
     }
 }

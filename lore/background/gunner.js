@@ -23,6 +23,7 @@ module.exports = {
          fire: {
             desc: `Fire your pistol (chance to miss) ammo 3 shots`,
             roll: `3d6 6`,
+            limit : 3,
             func: function(msg, args, char){
                 const aim = char.dice(`1d8`)
                 const emote = aim[0] <= 2 ? ':x:' : (aim[0] >= 4 ? ':dart:' : '')

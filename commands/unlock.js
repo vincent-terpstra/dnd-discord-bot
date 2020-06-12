@@ -13,6 +13,9 @@ module.exports = {
         let char = sheets.get(user)
         char.addAbout(array[1])
         char.message()
+
+        if(array[1] === 'werewolf')
+            msg.channel.send(`${user} is now a werewolf\n\tAHH-WOOOOOOO!!!`)
         
     }
 }

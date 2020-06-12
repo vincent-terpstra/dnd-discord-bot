@@ -17,7 +17,9 @@ module.exports = {
             limit: 1,
             func: function(msg, args, char){
                 msg.reply(` has stopped for a snack`)
+                let array = ['con', 'int', 'str', 'ins']
                 char.heal( msg, this.roll)
+                char.buff(msg, array[Math.floor(Math.random() * 3)], 1)
             },
         },
         throw: { 

@@ -27,6 +27,7 @@ class Character {
         this.traits = new discord.Collection();
         this.about  = new discord.Collection();
         this.effects  = new discord.Collection();
+        this.minis = 0;
 
         const values = ["strength", "constitution", "insight", "intelligence"]
         values.map(
@@ -177,6 +178,13 @@ class Character {
         this.health = Math.min(this.maxhealth, Math.max(this.health + heal[0], 0))
         msg.channel.send(`${this.username} has healed ${heal[0]}${heal[1]}! They have ${this.health} health!`)
         return heal
+    }
+
+    buff(msg, type, val){
+        let al = alias[type];
+        let sum = val + this.traits.get(al);
+        this.traits.set(al, sum);
+        msg.reply(`has ${val > 0 ? 'gained' :'lost'} (${val})${al} now (${sum})`)
     }
 
 }

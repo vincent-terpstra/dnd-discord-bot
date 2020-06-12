@@ -1,7 +1,7 @@
 module.exports = {
     data: {
         name: 'Werewolf',
-        about: 'AHH-WOOOOOOO!',
+        about: 'AHH-WOOOOOOO!!!',
         flaw: 'your character communicates in growls and snarls (and is a large hairy beast)'
     },
     rolls: {
@@ -17,9 +17,7 @@ module.exports = {
             func: function(msg, args, char){
                 msg.reply(`attacks for ${char.crit(this.roll)}`)
                 if(this.count-- > 0){
-                    const str = char.traits.get('strength') + 1
-                    msg.reply(`strength is now ${str}!`)
-                    char.traits.set('strength', str)
+                    char.buff(msg, 'str', 1)
                 }
             },
         },

@@ -76,5 +76,10 @@ module.exports = {
     bread: 'Dwarven domestic disputes are oftens settled with food fights. Leave it to the dwarfs to perfect any weapon, as dwarven throwing bread demonstrates.',
     thieves: 'A gentlemen\'s guild, where the bored elite try to oneup the others in daring acts of thievery',
     assassins: 'Have you paid your dues?',
-    robin: 'Sir Robin Jordan\n\tA gentleman and philanthropist, leader of the thieves guild'
+    robin: 'Sir Robin Jordan\n\tA gentleman and philanthropist, leader of the thieves guild',
+    biggus: 'Ser Biggus Dictus\n\tA centaur knoble - A majestic race of equine heritage\n\t'+
+        'City Council Member - East Pasture\n\tSlogan \"I\'m not horsing around!\" (he was a shoe in)',
+    zombie: 'Ser Simple Jack - Zombie\n\t'+
+        'City Council Member - Lower west side\n\tHis Slogan of \"BRAINNSSS\" really got people thinking',
+
 }

@@ -15,6 +15,11 @@ module.exports = {
             desc: `Hit with your shield (2nd attack)`,
             verb: `bashed with his shield`,
             roll: `1d6 str`
+        },
+        throw: {
+            desc: 'Throw your shield',
+            verb: 'chucked his shield',
+            roll: '1d4 2*str'
         }
     },
     buff: {'str': 2, 'con': 1},
