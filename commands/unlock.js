@@ -16,6 +16,8 @@ module.exports = {
 
         if(array[1] === 'werewolf')
             msg.channel.send(`${user} is now a werewolf\n\tAHH-WOOOOOOO!!!`)
-        
+            
+        if(array[1] === 'minime')
+            char.runCommand(msg, 'minime')
     }
 }

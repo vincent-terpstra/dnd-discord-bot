@@ -184,7 +184,7 @@ class Character {
         let al = alias[type];
         let sum = val + this.traits.get(al);
         this.traits.set(al, sum);
-        msg.reply(`has ${val > 0 ? 'gained' :'lost'} (${val})${al} now (${sum})`)
+        msg.channel.send(`${this.username} has ${val > 0 ? 'gained' :'lost'} (${val})${al} now (${sum})`)
     }
 
 }
